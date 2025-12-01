@@ -34,4 +34,4 @@ x=(a_0/6)**1/2
 
 The dimensions that maximize the volume of a cuboid for a fixed surface area A_0 are x = y = z = (a_0/6)**1/2. This means the shape that encloses the maximum volume for a given surface area is always a cube.
  
- **Maximum Volume=x**3=((a_0/6)**1/2)**3**
+ Maximum Volume=x**3=((a_0/6)**1/2)**3
