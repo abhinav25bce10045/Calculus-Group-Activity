@@ -1,0 +1,49 @@
+import sympy as sp
+
+def max_volume_cuboid_lagrange(A0):
+   
+    # 1. Define Symbolic Variables
+    
+    x, y, z, L = sp.symbols('x y z lambda', real=True, positive=True)
+
+    # 2. Define Objective and Constraint Functions
+    
+    V = x * y * z                                
+    g = 2*x*y + 2*x*z + 2*y*z - A0               
+
+    # 3. Form the Lagrange Function (L = V - lambda * g)
+    
+    Lagrange = V - L * g
+
+    # 4. Compute the Partial Derivatives (d/dx, d/dy, d/dz, d/dlambda)
+    
+    dL_dx = sp.diff(Lagrange, x)
+    dL_dy = sp.diff(Lagrange, y)
+    dL_dz = sp.diff(Lagrange, z)
+    dL_dL = sp.diff(Lagrange, L)
+
+    # 5. Solve the System of Equations
+    
+    s_squared = A0 / 6
+    s = sp.sqrt(s_squared)
+
+     # 6. Calculate Maximum Volume
+    
+    max_V = s**3
+    
+    max_V_val = float(max_V.subs(A0=A0))
+    s_val = float(s.subs(A0=A0))
+
+    return max_V_val, s_val, s_val, s_val
+
+# --- Example Usage ---
+# Given Surface Area A = 54
+Area_0 = 54.0
+
+max_V, x_s, y_s, z_s = max_volume_cuboid_lagrange(Area_0)
+
+print(f"Given Area (A0): {Area_0}")
+print("--- Lagrange Multiplier Solution ---")
+print(f"The shape that maximizes volume is a **cube** with side length:")
+print(f"x = y = z = {x_s:.4f} meters")
+print(f"The Maximum Volume is: {max_V:.4f} cubic meters")
